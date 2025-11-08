@@ -15,7 +15,7 @@ const EcoChatWidget = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post("https://gamified2-o.onrender.com", { message: input });
+      const res = await axios.post("https://gamified2-o.onrender.com/api/chatbot", { message: input });
       const botReply = res.data.reply || "No response";
       setMessages((prev) => [...prev, { sender: "bot", text: botReply }]);
     } catch (err) {

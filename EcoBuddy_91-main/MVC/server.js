@@ -18,7 +18,11 @@ dotenv.config();
 const app = express();
 
 // Middleware setup
-app.use(cors());            // Allow frontend (React) to access backend
+app.use(cors({
+  origin: "https://gamifiedwebapp.vercel.app",
+  methods: ["GET", "POST"],
+  credentials: true
+}));            // Allow frontend (React) to access backend
 app.use(express.json());    // Parse incoming JSON requests
 
 // Initialize Gemini API client with your API key

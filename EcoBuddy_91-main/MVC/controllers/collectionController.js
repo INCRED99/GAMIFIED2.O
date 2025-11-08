@@ -14,7 +14,7 @@ export const addWasteImage = async (req, res) => {
       return res.status(400).json({ message: "No image uploaded or file invalid" });
     }
 
-    const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
+    const BASE_URL = process.env.BASE_URL || "https://gamified2-o.onrender.com";
     const imageUrl = `/uploads/${req.file.filename}`;
     const fullUrl = `${BASE_URL}${imageUrl}`;
 
@@ -49,7 +49,7 @@ export const addPlantationImage = async (req, res) => {
       return res.status(400).json({ message: "No image uploaded or file invalid" });
     }
 
-    const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
+    const BASE_URL = process.env.BASE_URL || "https://gamified2-o.onrender.com";
     const imageUrl = `/uploads/${req.file.filename}`;
     const fullUrl = `${BASE_URL}${imageUrl}`;
 
@@ -105,7 +105,7 @@ export const removeImage = async (req, res) => {
 export const getUserCollection = async (req, res) => {
   try {
     const userId = req.user._id;
-    const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
+    const BASE_URL = process.env.BASE_URL || "https://gamified2-o.onrender.com";
 
     // Fetch user info
     const user = await UserModel.findById(userId).lean();

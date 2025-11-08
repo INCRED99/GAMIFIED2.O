@@ -82,7 +82,7 @@ const Index = () => {
     formData.append("picture", file);
 
     axios
-      .post("http://localhost:3000/api/user/profile/picture", formData, {
+      .post("https://gamified2-o.onrender.com/api/user/profile/picture", formData, {
         withCredentials: true,
         headers: {
           Authorization: `Bearer ${user?.token}`,
@@ -107,7 +107,7 @@ const Index = () => {
   useEffect(() => {
     if (user?.token) {
       axios
-        .get("http://localhost:3000/api/user/profile", {
+        .get("https://gamified2-o.onrender.com/api/user/profile", {
           withCredentials: true,
           headers: { Authorization: `Bearer ${user.token}` },
         })

@@ -12,7 +12,7 @@ export const LeaderboardSection: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/ecoPoints/leaderboard")
+      .get("https://gamified2-o.onrender.com/api/ecoPoints/leaderboard")
       .then((res) => setLeaderboard(res.data))
       .catch((err) => console.error("Failed to load leaderboard", err));
   }, []);

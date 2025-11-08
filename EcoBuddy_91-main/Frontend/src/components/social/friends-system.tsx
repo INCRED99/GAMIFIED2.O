@@ -89,8 +89,8 @@ export const FriendsSystem = ({ currentUser }: FriendsSystemProps) => {
   try {
     const url =
       action === "accept"
-        ? `http://localhost:3000/api/user/accept/${requestId}`
-        : `http://localhost:3000/api/user/decline/${requestId}`;
+        ? `https://gamified2-o.onrender.com/api/user/accept/${requestId}`
+        : `https://gamified2-o.onrender.com/api/user/decline/${requestId}`;
 
     await axios.put(url, {}, { headers: { Authorization: `Bearer ${currentUser.token}` } });
 

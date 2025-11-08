@@ -14,7 +14,7 @@ const updateProfileImage = async (req, res) => {
     }
 
     const imageUrl = `/uploads/${req.file.filename}`;
-    const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
+    const BASE_URL = process.env.BASE_URL || "https://gamified2-o.onrender.com";
     const fullUrl = `${BASE_URL}${imageUrl}`;
 
     const user = await UserModel.findByIdAndUpdate(

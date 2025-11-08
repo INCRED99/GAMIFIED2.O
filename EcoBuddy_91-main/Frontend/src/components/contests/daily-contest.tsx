@@ -43,7 +43,7 @@ export const DailyContest = (props: DailyContestProps) => {
 
     try {
       const res = await axios.get(
-        "http://localhost:3000/api/quiz/random-questions",
+        "https://gamified2-o.onrender.com/api/quiz/random-questions",
         {
           headers: { Authorization: `Bearer ${currentUser.token}` },
         }
@@ -84,7 +84,7 @@ export const DailyContest = (props: DailyContestProps) => {
       // mark question as solved in backend
       try {
         await axios.post(
-          "http://localhost:3000/api/question/mark-solved",
+          "https://gamified2-o.onrender.com/api/question/mark-solved",
           { questionId: currentQuestion.id },
           { headers: { Authorization: `Bearer ${currentUser.token}` } }
         );

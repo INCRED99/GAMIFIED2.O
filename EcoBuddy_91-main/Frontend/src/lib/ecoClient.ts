@@ -1,7 +1,7 @@
 // src/lib/ecoClient.ts
 import axios from "axios";
 
-const API_BASE = (import.meta.env.VITE_API_BASE_URL as string) || "http://localhost:3000";
+const API_BASE = (import.meta.env.VITE_API_BASE_URL as string) || "https://gamified2-o.onrender.com";
 
 /**
  * Try a number of common localStorage keys to discover the current user id.

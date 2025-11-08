@@ -26,7 +26,7 @@ export const RegisterForm = ({ onRegister }: RegisterFormProps) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/user/register",
+        "https://gamified2-o.onrender.com/api/user/register",
         { ...formData, userType },
         { withCredentials: true }
       );

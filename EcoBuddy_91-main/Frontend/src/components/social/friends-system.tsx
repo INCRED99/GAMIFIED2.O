@@ -66,10 +66,10 @@ export const FriendsSystem = ({ currentUser }: FriendsSystemProps) => {
     const fetchData = async () => {
       try {
         const [friendsRes, usersRes] = await Promise.all([
-          axios.get("http://localhost:3000/api/user/getfriends", {
+          axios.get("https://gamified2-o.onrender.com/api/user/getfriends", {
             headers: { Authorization: `Bearer ${currentUser.token}` },
           }),
-          axios.get("http://localhost:3000/api/user/displayUser", {
+          axios.get("https://gamified2-o.onrender.com/api/user/displayUser", {
             headers: { Authorization: `Bearer ${currentUser.token}` },
           }),
         ]);
@@ -99,7 +99,7 @@ export const FriendsSystem = ({ currentUser }: FriendsSystemProps) => {
 
     if (action === "accept") {
       // Fetch updated friends list
-      const res = await axios.get("http://localhost:3000/api/user/getfriends", {
+      const res = await axios.get("https://gamified2-o.onrender.com/api/user/getfriends", {
         headers: { Authorization: `Bearer ${currentUser.token}` },
       });
       setFriends(res.data.friends || []);
@@ -114,7 +114,7 @@ export const FriendsSystem = ({ currentUser }: FriendsSystemProps) => {
   const handleSendRequest = async (recipientId: string) => {
     try {
       await axios.post(
-        `http://localhost:3000/api/user/request/${recipientId}`,
+        `https://gamified2-o.onrender.com/api/user/request/${recipientId}`,
         {},
         { headers: { Authorization: `Bearer ${currentUser.token}` } }
       );
@@ -335,7 +335,7 @@ export const FriendsSystem = ({ currentUser }: FriendsSystemProps) => {
                         ✅ Complete
                       </Button>
                     ) : (
-                      <Badge variant="success">
+                      <Badge variant="secondary">
                         Winner: {ch.winner}
                       </Badge>
                     )}

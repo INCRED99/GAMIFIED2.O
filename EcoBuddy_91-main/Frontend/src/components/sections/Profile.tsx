@@ -53,7 +53,7 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({
       formData.append("image", file);
 
       const res = await axios.post(
-        "http://localhost:3000/api/user/profile-image",
+        "https://gamified2-o.onrender.com/api/user/profile-image",
         formData,
         {
           headers: {

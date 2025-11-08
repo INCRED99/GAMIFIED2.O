@@ -50,7 +50,7 @@ export const ChallengesSection: React.FC<ChallengesSectionProps> = ({ currentUse
 
   // Fetch friends
   useEffect(() => {
-    axios.get("http://localhost:3000/api/user/getfriends", authHeaders)
+    axios.get("https://gamified2-o.onrender.com/api/user/getfriends", authHeaders)
       .then(res => setFriends(res.data.friends || []))
       .catch(err => console.error(err));
   }, []);
@@ -58,7 +58,7 @@ export const ChallengesSection: React.FC<ChallengesSectionProps> = ({ currentUse
   // Fetch pending invites
   const fetchInvites = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/challenge/myinvites", authHeaders);
+      const res = await axios.get("https://gamified2-o.onrender.com/challenge/myinvites", authHeaders);
       setPendingInvites(res.data.invites || []);
     } catch (err) { console.error(err); }
   };
@@ -74,7 +74,7 @@ export const ChallengesSection: React.FC<ChallengesSectionProps> = ({ currentUse
   const handleSendInvite = async () => {
     if (!selectedFriend) return;
     try {
-      await axios.post("http://localhost:3000/challenge/invite",
+      await axios.post("https://gamified2-o.onrender.com/challenge/invite",
         { friendId: selectedFriend._id, numQuestions }, authHeaders);
       setShowInviteModal(false);
       fetchInvites();
@@ -85,7 +85,7 @@ export const ChallengesSection: React.FC<ChallengesSectionProps> = ({ currentUse
   // Accept invite -> switch to play tab
   const handleAcceptInvite = async (invite: Challenge) => {
     try {
-      await axios.post("http://localhost:3000/challenge/accept", { inviteId: invite._id }, authHeaders);
+      await axios.post("https://gamified2-o.onrender.com/challenge/accept", { inviteId: invite._id }, authHeaders);
       setCurrentChallenge(invite);
       setActiveTab("play");
       setHasStarted(false);
@@ -96,13 +96,13 @@ export const ChallengesSection: React.FC<ChallengesSectionProps> = ({ currentUse
   const handleStartChallenge = async () => {
     if (!currentChallenge) return;
     try {
-      await axios.post("http://localhost:3000/challenge/start",
+      await axios.post("https://gamified2-o.onrender.com/challenge/start",
         { challengeId: currentChallenge._id }, authHeaders);
       setHasStarted(true);
 
       // Fetch questions
       const res = await axios.get(
-        `http://localhost:3000/challenge/getQuestions?numQuestions=${currentChallenge.numQuestions}`,
+        `https://gamified2-o.onrender.com/challenge/getQuestions?numQuestions=${currentChallenge.numQuestions}`,
         authHeaders
       );
       setQuestions(res.data.questions || []);
@@ -140,7 +140,7 @@ export const ChallengesSection: React.FC<ChallengesSectionProps> = ({ currentUse
     clearInterval(intervalId);
     if (!currentChallenge) return;
     try {
-      const res = await axios.post("http://localhost:3000/challenge/submit",
+      const res = await axios.post("https://gamified2-o.onrender.com/challenge/submit",
         { challengeId: currentChallenge._id, answers, timeTaken: currentChallenge.numQuestions*30 - questionTimer },
         authHeaders
       );
